@@ -23,13 +23,20 @@
       {% endif %}
 
       <h2>Add a stylist:</h2>
-      <form action='/addStylist' method='post'>
+      <form action='/' method='post'>
         <div class="form-group">
           <label for='stylist-name'>Stylist Name</label>
           <input name='stylist-name' type='text' class='form-control'>
         </div>
         <button type='submit' class='btn btn-success'>Submit</button>
       </form>
+
+      <h2>Delete All Stylist:</h2>
+      <form action='/deleteAll' method='post'>
+        <input name="_method" type="hidden" value="delete">
+        <button type='submit' class='btn btn-danger'>Delete All!</button>
+      </form>
+
 
     </div>
   </body>

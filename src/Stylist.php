@@ -47,6 +47,7 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->query("DELETE FROM stylists;");
+            $GLOBALS['DB']->query("DELETE FROM clients;");
 
         }
 
