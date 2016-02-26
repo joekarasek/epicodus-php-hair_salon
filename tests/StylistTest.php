@@ -17,6 +17,7 @@
         protected function tearDown()
         {
             Stylist::deleteAll();
+            Client::deleteAll();
 
         }
 
