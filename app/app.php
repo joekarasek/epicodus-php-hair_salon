@@ -51,7 +51,7 @@
         ));
     });
 
-    //Stylist pages, lists clients, allows edit and deletion
+    // Stylist pages, lists clients, allows edit and deletion
     $app->get("/stylist/{id}", function($id) use ($app) {
         $stylist = Stylist::find($id);
 
@@ -70,11 +70,11 @@
     });
 
     $app->get("/stylist/{id}/delete", function($id) use ($app) {
-      $stylist = Stylist::find($id);
+        $stylist = Stylist::find($id);
 
-      return $app['twig']->render('stylist_delete.html.twig', array(
-        'stylist' => $stylist
-      ));
+        return $app['twig']->render('stylist_delete.html.twig', array(
+            'stylist' => $stylist
+        ));
     });
 
     $app->patch("/stylist/{id}", function($id) use ($app) {
@@ -108,7 +108,7 @@
         $stylist = Stylist::find($id);
         $clients = $stylist->getClients();
         foreach ($clients as $client) {
-          $client->delete();
+            $client->delete();
         }
 
         return $app['twig']->render('stylist.html.twig', array(
@@ -135,6 +135,31 @@
         ));
     });
 
+    // Client pages
+    $app->get("/client/{id}/delete", function($id) use ($app) {
+        $client = Client::find($id);
+        $stylist = Stylist::find($client->getStylistId());
+
+        return $app['twig']->render('client_delete.html.twig', array(
+            'stylist' => $stylist,
+            'client' => $client
+        ));
+    });
+
+    $app->delete("/client/{id}", function($id) use ($app) {
+        $client = Client::find($id);
+        $client->delete();
+        $stylist = Stylist::find($client->getStylistId());
+
+        return $app['twig']->render('stylist.html.twig', array(
+            'stylist' => $stylist,
+            'clients' => $stylist->getClients(),
+            'message' => array(
+                'type' => 'danger',
+                'text' => $client->getName() . " was deleted."
+            )
+        ));
+    });
 
     return $app;
 ?>

@@ -18,7 +18,11 @@
       {% if clients is not empty%}
         <ul>
           {% for client in clients %}
-            <li>{{ client.getName }}</li>
+            <li>
+              {{ client.getName }}
+              <a href="/client/{{ client.getId }}/edit">Edit</a>
+              <a href="/client/{{ client.getId }}/delete">Delete</a>
+            </li>
           {% endfor %}
         </ul>
       {% else%}
