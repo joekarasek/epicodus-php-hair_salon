@@ -13,7 +13,9 @@
       {% if stylists is not empty %}
         <ul>
           {% for stylist in stylists %}
-            <li class="well"><a href="#">{{ stylist.getName }}</a></li>
+            <li class="well">
+              <a href="/stylist/{{ stylist.getId }}">{{ stylist.getName }}</a>
+            </li>
           {% endfor %}
         </ul>
       {% else %}

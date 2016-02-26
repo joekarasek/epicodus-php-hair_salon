@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include '/includes/head.html.twig' %}
+  </head>
+  <body>
+    {% include '/includes/navbar.html.twig' %}
+    <div class="container">
+      <h1>Hair Salon App</h1>
+      <h2>Stylist: {{ stylist.getName }}</h2>
+      <a href="/stylist/{{ stylist.getId }}/edit" class="btn btn-info" role="button">Edit Stylist Name</a>
+      <a href="/stylist/{{ stylist.getId }}/edit" class="btn btn-info" role="button">Delete Stylist</a>
+
+      {% include '/includes/message.html.twig'%}
+      <p>Below is a list of {{ stylist.getName }}'s clients:</p>
+
+
+      <h2>Add a client:</h2>
+      <form action='#' method='post'>
+        <div class="form-group">
+          <label for='client-name'>Client Name</label>
+          <input name='client-name' type='text' class='form-control'>
+        </div>
+        <button type='submit' class='btn btn-success'>Submit</button>
+      </form>
+
+      <h2>Delete All Clients:</h2>
+      <form action='#' method='post'>
+        <input name="_method" type="hidden" value="delete">
+        <button type='submit' class='btn btn-danger'>Delete All!</button>
+      </form>
+
+
+    </div>
+  </body>
+</html>
