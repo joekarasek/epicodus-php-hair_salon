@@ -56,7 +56,8 @@
         $stylist = Stylist::find($id);
 
         return $app['twig']->render('stylist.html.twig', array(
-            'stylist' => $stylist
+            'stylist' => $stylist,
+            'clients' => $stylist->getClients(),
         ));
     });
 
@@ -82,6 +83,7 @@
 
         return $app['twig']->render('stylist.html.twig', array(
             'stylist' => $stylist,
+            'clients' => $stylist->getClients(),
             'message' => array(
                 'type' => 'info',
                 'text' => 'The name of your stylist was updated to ' . $stylist->getName()
@@ -109,6 +111,7 @@
 
         return $app['twig']->render('stylist.html.twig', array(
             'stylist' => $stylist,
+            'clients' => $stylist->getClients(),
             'message' => array(
                 'type' => 'info',
                 'text' => $new_client->getName() . " was added to " . $stylist->getName() . "'s client list"

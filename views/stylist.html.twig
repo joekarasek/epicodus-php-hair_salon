@@ -15,6 +15,15 @@
       <a href="/stylist/{{ stylist.getId }}/delete" class="btn btn-info" role="button">Delete Stylist</a>
 
       <p>Below is a list of {{ stylist.getName }}'s clients:</p>
+      {% if clients is not empty%}
+        <ul>
+          {% for client in clients %}
+            <li>{{ client.getName }}</li>
+          {% endfor %}
+        </ul>
+      {% else%}
+        <p>There are no current clients</p>
+      {% endif %}
 
 
       <h2>Add a client:</h2>
