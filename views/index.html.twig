@@ -6,6 +6,21 @@
   <body>
     {% include '/includes/navbar.html.twig' %}
     <div class="container">
+      <h1>Hair Salon App</h1>
+      <p>Below is a list of our wonderful hair stylists!</p>
+
+      {% if stylists is not empty %}
+        <ul>
+          {% for stylist in stylists %}
+            <li class="well"><a href="#">{{ stylist.getName }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="well">
+          <h2>We currently have no stylists!</h2>
+        </div>
+      {% endif %}
+
       {% include '/includes/message.html.twig'%}
       {% include '/includes/form.html.twig' %}
     </div>
