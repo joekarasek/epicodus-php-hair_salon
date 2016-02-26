@@ -60,5 +60,26 @@
         ));
     });
 
+    $app->get("/stylist/{id}/edit", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+
+        return $app['twig']->render('stylist_edit.html.twig', array(
+            'stylist' => $stylist
+        ));
+    });
+
+    $app->patch("/stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $stylist->update($_POST['new-name']);
+
+        return $app['twig']->render('stylist.html.twig', array(
+            'stylist' => $stylist,
+            'message' => array(
+                'type' => 'info',
+                'text' => 'The name of your stylist was updated to ' . $stylist->getName()
+            )
+        ));
+    });
+
     return $app;
 ?>

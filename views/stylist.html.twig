@@ -7,11 +7,13 @@
     {% include '/includes/navbar.html.twig' %}
     <div class="container">
       <h1>Hair Salon App</h1>
+      
+      {% include '/includes/message.html.twig'%}
+
       <h2>Stylist: {{ stylist.getName }}</h2>
       <a href="/stylist/{{ stylist.getId }}/edit" class="btn btn-info" role="button">Edit Stylist Name</a>
-      <a href="/stylist/{{ stylist.getId }}/edit" class="btn btn-info" role="button">Delete Stylist</a>
+      <a href="/stylist/{{ stylist.getId }}/delete" class="btn btn-info" role="button">Delete Stylist</a>
 
-      {% include '/includes/message.html.twig'%}
       <p>Below is a list of {{ stylist.getName }}'s clients:</p>
 
 
