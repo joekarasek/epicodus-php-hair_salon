@@ -36,7 +36,7 @@
       </form>
 
       <h2>Delete All Clients:</h2>
-      <form action='#' method='post'>
+      <form action='/stylist/{{ stylist.getId }}/deleteAllClients' method='post'>
         <input name="_method" type="hidden" value="delete">
         <button type='submit' class='btn btn-danger'>Delete All!</button>
       </form>

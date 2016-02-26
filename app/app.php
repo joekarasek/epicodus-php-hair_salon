@@ -104,6 +104,22 @@
         ));
     });
 
+    $app->delete("/stylist/{id}/deleteAllClients", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $clients = $stylist->getClients();
+        foreach ($clients as $client) {
+          $client->delete();
+        }
+
+        return $app['twig']->render('stylist.html.twig', array(
+            'stylist' => $stylist,
+            'message' => array(
+                'type' => 'danger',
+                'text' => 'All cliets of ' . $stylist->getName() . ' have been deleted.'
+            )
+        ));
+    });
+
     $app->post("/stylist/{id}/addClient", function($id) use ($app) {
         $stylist = Stylist::find($id);
         $new_client = new Client($_POST['client-name'], $id);
