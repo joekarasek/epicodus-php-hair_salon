@@ -25,7 +25,8 @@
         {
             // Arrange
             $name = 'Betty Boop';
-            $test_Client = new Client($name);
+            $stylist_id = 1;
+            $test_Client = new Client($name, $stylist_id);
 
             // Act
             $test_Client->save();
@@ -39,8 +40,9 @@
         {
             // Arrange
             $name = 'Betty Boop';
+            $stylist_id = 10;
             $id = 1;
-            $test_Client = new Client($name, $id);
+            $test_Client = new Client($name, $stylist_id, $id);
 
             // Act
             $result = $test_Client->getId();
@@ -53,10 +55,11 @@
         {
             // Arrange
             $name = 'Betty Boop';
-            $test_Client = new Client($name);
+            $stylist_id = 10;
+            $test_Client = new Client($name, $stylist_id);
             $test_Client->save();
-            $name2 = 'Modern Rock';
-            $test_Client2 = new Client($name2);
+            $name2 = 'Martha Stewart';
+            $test_Client2 = new Client($name2, $stylist_id);
             $test_Client2->save();
 
             // Act
@@ -71,10 +74,11 @@
         {
             // Arrange
             $name = 'Betty Boop';
-            $test_Client = new Client($name);
+            $stylist_id = 10;
+            $test_Client = new Client($name, $stylist_id);
             $test_Client->save();
             $name2 = 'Martha Stewart';
-            $test_Client2 = new Client($name2);
+            $test_Client2 = new Client($name2, $stylist_id);
             $test_Client2->save();
 
             // Act
@@ -90,10 +94,11 @@
         {
             // Arrange
             $name = 'Betty Boop';
-            $test_Client = new Client($name);
+            $stylist_id = 10;
+            $test_Client = new Client($name, $stylist_id);
             $test_Client->save();
             $name2 = 'Martha Stewart';
-            $test_Client2 = new Client($name2);
+            $test_Client2 = new Client($name2, $stylist_id);
             $test_Client2->save();
 
             // Act

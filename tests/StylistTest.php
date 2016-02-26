@@ -55,7 +55,7 @@
             $name = 'Betty Boop';
             $test_Stylist = new Stylist($name);
             $test_Stylist->save();
-            $name2 = 'Modern Rock';
+            $name2 = 'Marth Stewart';
             $test_Stylist2 = new Stylist($name2);
             $test_Stylist2->save();
 
