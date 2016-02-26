@@ -115,7 +115,7 @@
             'stylist' => $stylist,
             'message' => array(
                 'type' => 'danger',
-                'text' => 'All cliets of ' . $stylist->getName() . ' have been deleted.'
+                'text' => 'All clients of ' . $stylist->getName() . ' have been deleted.'
             )
         ));
     });
