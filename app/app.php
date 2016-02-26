@@ -81,5 +81,26 @@
         ));
     });
 
+    $app->delete("/stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $stylist->delete();
+
+        return $app['twig']->render('index.html.twig', array(
+            'stylists' => Stylist::getAll(),
+            'message' => array(
+                'type' => 'danger',
+                'text' => $stylist->getName() . " was deleted."
+            )
+        ));
+    });
+
+    $app->get("/stylist/{id}/delete", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+
+        return $app['twig']->render('stylist_delete.html.twig', array(
+            'stylist' => $stylist
+        ));
+    });
+
     return $app;
 ?>

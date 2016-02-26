@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include '/includes/head.html.twig' %}
+  </head>
+  <body>
+    {% include '/includes/navbar.html.twig' %}
+    <div class="container">
+      <h1>Hair Salon App</h1>
+      <h2>Stylist: {{ stylist.getName }}</h2>
+      <h3>Are you sure you want to delete this stylist? This will also remove all clients of this stylist.</h3>
+
+      <form action='/stylist/{{ stylist.getId }}' method='post'>
+        <input name="_method" type="hidden" value="delete">
+        <button type='submit' class='btn btn-success'>Delete Stylist</button>
+        <a href="/stylist/{{ stylist.getId }}" class="btn btn-danger" role="button">Cancel</a>
+      </form>
+
+    </div>
+  </body>
+</html>
