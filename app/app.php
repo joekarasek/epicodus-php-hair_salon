@@ -17,7 +17,7 @@
 
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.html.twig', array(
-            'stylists' => Stylist::getAll()
+            'stylists' => Stylist::getAll(),
         ));
     });
 
@@ -26,7 +26,11 @@
         $new_stylist->save();
 
         return $app['twig']->render('index.html.twig', array(
-            'stylists' => Stylist::getAll()
+            'stylists' => Stylist::getAll(),
+            'message' => array(
+                'type' => 'info',
+                'text' => $_POST['stylist-name'] . " was added to the list of stylists."
+            )
         ));
     });
 

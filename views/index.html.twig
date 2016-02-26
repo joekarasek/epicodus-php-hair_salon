@@ -7,6 +7,7 @@
     {% include '/includes/navbar.html.twig' %}
     <div class="container">
       <h1>Hair Salon App</h1>
+      {% include '/includes/message.html.twig'%}
       <p>Below is a list of our wonderful hair stylists!</p>
 
       {% if stylists is not empty %}
@@ -21,7 +22,6 @@
         </div>
       {% endif %}
 
-      {% include '/includes/message.html.twig'%}
       <h2>Add a stylist:</h2>
       <form action='/addStylist' method='post'>
         <div class="form-group">
