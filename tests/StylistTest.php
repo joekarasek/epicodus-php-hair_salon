@@ -6,6 +6,7 @@
     */
 
     require_once __DIR__ . '/../src/Stylist.php';
+    require_once __DIR__ . '/../src/Client.php';
 
     $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
     $username = 'root';
@@ -135,6 +136,27 @@
 
             // Assert
             $this->assertEquals([$test_Stylist2], Stylist::getAll());
+        }
+
+        function test_returnClients()
+        {
+            // Arrange
+            $name = 'Betty Boop';
+            $test_Stylist = new Stylist($name);
+            $test_Stylist->save();
+            $stylist_id = $test_Stylist->getId();
+            $name2 = 'Jon Boop';
+            $test_Client = new Client($name2, $stylist_id);
+            $test_Client->save();
+            $name3 = 'Mike Boop';
+            $test_Client2 = new Client($name3, $stylist_id);
+            $test_Client2->save();
+
+            // Act
+            $result = $test_Stylist->getClients();
+
+            // Assert
+            $this->assertEquals([$test_Client, $test_Client2], $result);
         }
     }
  ?>
