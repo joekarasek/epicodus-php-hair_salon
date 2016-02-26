@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include '/includes/head.html.twig' %}
+  </head>
+  <body>
+    {% include '/includes/navbar.html.twig' %}
+    <div class="container">
+      <h1>Hair Salon App</h1>
+      <h2>Client: {{ client.getName }}</h2>
+
+      <form action='/client/{{ client.getId }}' method='post'>
+        <input name="_method" type="hidden" value="patch">
+        <div class="form-group">
+          <label for='new-name'>Enter a new name for this client:</label>
+          <input name='new-name' type='text' class='form-control'>
+        </div>
+        <button type='submit' class='btn btn-success'>Submit</button>
+        <a href="/client/{{ client.getId }}" class="btn btn-danger" role="button">Cancel</a>
+      </form>
+
+    </div>
+  </body>
+</html>

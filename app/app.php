@@ -6,7 +6,7 @@
     // create silex object with twig templating
     $app = new Silex\Application();
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/../views'
+        'twig.path' => __DIR__.'/../views'
     ));
 
     // setup server for database
@@ -146,6 +146,14 @@
         ));
     });
 
+    $app->get("/client/{id}/edit", function($id) use ($app) {
+        $client = Client::find($id);
+
+        return $app['twig']->render('client_edit.html.twig', array(
+            'client' => $client
+        ));
+    });
+
     $app->delete("/client/{id}", function($id) use ($app) {
         $client = Client::find($id);
         $client->delete();
@@ -157,6 +165,21 @@
             'message' => array(
                 'type' => 'danger',
                 'text' => $client->getName() . " was deleted."
+            )
+        ));
+    });
+
+    $app->patch("/client/{id}", function($id) use ($app) {
+        $client = Client::find($id);
+        $client->update($_POST['new-name']);
+        $stylist = Stylist::find($client->getStylistId());
+
+        return $app['twig']->render('stylist.html.twig', array(
+            'clients' => $stylist->getClients(),
+            'stylist' => $stylist,
+            'message' => array(
+                'type' => 'info',
+                'text' => 'The name of your client was updated to ' . $client->getName()
             )
         ));
     });
