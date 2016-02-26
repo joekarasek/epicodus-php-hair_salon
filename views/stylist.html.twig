@@ -7,7 +7,7 @@
     {% include '/includes/navbar.html.twig' %}
     <div class="container">
       <h1>Hair Salon App</h1>
-      
+
       {% include '/includes/message.html.twig'%}
 
       <h2>Stylist: {{ stylist.getName }}</h2>
@@ -18,7 +18,7 @@
 
 
       <h2>Add a client:</h2>
-      <form action='#' method='post'>
+      <form action='/stylist/{{ stylist.getId }}/addClient' method='post'>
         <div class="form-group">
           <label for='client-name'>Client Name</label>
           <input name='client-name' type='text' class='form-control'>

@@ -68,6 +68,14 @@
         ));
     });
 
+    $app->get("/stylist/{id}/delete", function($id) use ($app) {
+      $stylist = Stylist::find($id);
+
+      return $app['twig']->render('stylist_delete.html.twig', array(
+        'stylist' => $stylist
+      ));
+    });
+
     $app->patch("/stylist/{id}", function($id) use ($app) {
         $stylist = Stylist::find($id);
         $stylist->update($_POST['new-name']);
@@ -94,13 +102,20 @@
         ));
     });
 
-    $app->get("/stylist/{id}/delete", function($id) use ($app) {
+    $app->post("/stylist/{id}/addClient", function($id) use ($app) {
         $stylist = Stylist::find($id);
+        $new_client = new Client($_POST['client-name'], $id);
+        $new_client->save();
 
-        return $app['twig']->render('stylist_delete.html.twig', array(
-            'stylist' => $stylist
+        return $app['twig']->render('stylist.html.twig', array(
+            'stylist' => $stylist,
+            'message' => array(
+                'type' => 'info',
+                'text' => $new_client->getName() . " was added to " . $stylist->getName() . "'s client list"
+            )
         ));
     });
+
 
     return $app;
 ?>
