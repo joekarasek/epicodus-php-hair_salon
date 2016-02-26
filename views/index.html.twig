@@ -22,7 +22,15 @@
       {% endif %}
 
       {% include '/includes/message.html.twig'%}
-      {% include '/includes/form.html.twig' %}
+      <h2>Add a stylist:</h2>
+      <form action='/addStylist' method='post'>
+        <div class="form-group">
+          <label for='stylist-name'>Stylist Name</label>
+          <input name='stylist-name' type='text' class='form-control'>
+        </div>
+        <button type='submit' class='btn btn-success'>Submit</button>
+      </form>
+
     </div>
   </body>
 </html>
