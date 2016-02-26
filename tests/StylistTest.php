@@ -106,18 +106,35 @@
 
         function test_update()
         {
-          // Arrange
-          $name = 'Betty Boop';
-          $test_Stylist = new Stylist($name);
-          $test_Stylist->save();
-          $new_name = 'Bruce Boop';
+            // Arrange
+            $name = 'Betty Boop';
+            $test_Stylist = new Stylist($name);
+            $test_Stylist->save();
+            $new_name = 'Bruce Boop';
 
-          // Act
-          $test_Stylist->update($new_name);
-          $result = $test_Stylist->getName();
+            // Act
+            $test_Stylist->update($new_name);
+            $result = $test_Stylist->getName();
 
-          // Assert
-          $this->assertEquals($new_name, $result);
+            // Assert
+            $this->assertEquals($new_name, $result);
+        }
+
+        function test_delete()
+        {
+            // Arrange
+            $name = 'Betty Boop';
+            $test_Stylist = new Stylist($name);
+            $test_Stylist->save();
+            $name2 = 'Martha Stewart';
+            $test_Stylist2 = new Stylist($name2);
+            $test_Stylist2->save();
+
+            // Act
+            $test_Stylist->delete();
+
+            // Assert
+            $this->assertEquals([$test_Stylist2], Stylist::getAll());
         }
     }
  ?>
