@@ -103,5 +103,21 @@
             // Assert
             $this->assertEquals($test_Stylist, $result);
         }
+
+        function test_update()
+        {
+          // Arrange
+          $name = 'Betty Boop';
+          $test_Stylist = new Stylist($name);
+          $test_Stylist->save();
+          $new_name = 'Bruce Boop';
+
+          // Act
+          $test_Stylist->update($new_name);
+          $result = $test_Stylist->getName();
+
+          // Assert
+          $this->assertEquals($new_name, $result);
+        }
     }
  ?>
